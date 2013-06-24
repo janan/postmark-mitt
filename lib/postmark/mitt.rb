@@ -123,7 +123,7 @@ module Postmark
 
       def read
         @read ||= begin
-          tempfile = MittTempfile.new(file_name, content_type)
+          tempfile = MittTempfile.new(file_name, content_type, "#{Rails.root}/app/temp_attachments")
           tempfile.write(Base64.decode64(source["Content"]))
           tempfile.rewind
           tempfile
